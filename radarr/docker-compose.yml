@@ -1,0 +1,25 @@
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:6.0.4
+    container_name: radarr
+    environment:
+      - PUID=501
+      - PGID=20
+      - TZ=Europe/Madrid
+    volumes:
+      - ./config:/config
+      - /Users/lukas/mnt/gdrive/media:/data
+      - ../qbittorrent/downloads:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    networks:
+      - media-tube-net
+
+volumes:
+   data:
+     name: media-tube-data
+
+networks:
+  media-tube-net:
+    external: true
