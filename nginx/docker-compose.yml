@@ -1,0 +1,20 @@
+services:
+  nginx:
+    image: nginx:1.29.3-trixie-perl
+    container_name: nginx
+    volumes:
+      - ./config:/etc/nginx/templates:ro
+    ports:
+      - 80:80
+    environment:
+      - SSL_PORT=${SSL_PORT}
+      - PIHOLE_SUBDOMAIN=${PIHOLE_SUBDOMAIN}
+      - JELLYSEERR_SUBDOMAIN=${JELLYSEERR_SUBDOMAIN}
+      - JELLYFIN_SUBDOMAIN=${JELLYFIN_SUBDOMAIN}
+    networks:
+      - media-tube-net
+    restart: unless-stopped
+
+networks:
+   media-tube-net:
+     external: true
