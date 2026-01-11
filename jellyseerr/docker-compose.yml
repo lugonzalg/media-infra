@@ -17,4 +17,15 @@ services:
       timeout: 3s
       interval: 15s
       retries: 3
+    networks:
+      - media-tube-net
     restart: unless-stopped
+
+networks:
+  media-tube-net:
+    name: media-tube-net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${PRIVATE_NETWORK_ADDRESS}
+          gateway: ${PRIVATE_NETWORK}.1
