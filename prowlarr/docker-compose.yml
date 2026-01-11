@@ -11,4 +11,10 @@ services:
       - ./config:/config
     ports:
       - 9696:9696
+    networks:
+      - media-tube-net
     restart: unless-stopped
+
+networks:
+  media-tube-net:
+    external: true
