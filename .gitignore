@@ -1,3 +1,5 @@
 .env
 volume
 *.conf
+qBittorrent
+config
