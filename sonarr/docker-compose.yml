@@ -10,12 +10,5 @@ services:
       - ./config:/config
       - /Users/lukas/mnt/gdrive/media:/data
       - ../qbittorrent/downloads:/downloads
-    ports:
-      - 8989:8989
-    networks:
-      - media-tube-net
+    network_mode: container:gluetun
     restart: unless-stopped
-
-networks:
-  media-tube-net:
-    external: true

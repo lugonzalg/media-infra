@@ -14,8 +14,15 @@ services:
       - 6881:6881/udp
       - 5055:5055
       - 9696:9696
+      - 8989:8989
     environment:
       - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
       - VPN_TYPE=${VPN_TYPE}
       # - DOT=${DOT}
       # - DNS_ADDRESS=${DNS_ADDRESS}
+    networks:
+      - vpn
+
+networks:
+  vpn:
+    name: "vpn"
