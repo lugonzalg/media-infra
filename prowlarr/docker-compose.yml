@@ -9,12 +9,5 @@ services:
       - TZ=Europe/Madrid
     volumes:
       - ./config:/config
-    ports:
-      - 9696:9696
-    networks:
-      - media-tube-net
+    network_mode: container:gluetun
     restart: unless-stopped
-
-networks:
-  media-tube-net:
-    external: true
