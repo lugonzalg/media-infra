@@ -12,14 +12,5 @@ services:
     volumes:
       - ./config:/config
       - ./downloads:/downloads
-    ports:
-      - 8080:8080
-      - 6881:6881
-      - 6881:6881/udp
-    networks:
-      - media-tube-net
+    network_mode: container:gluetun
     restart: unless-stopped
-
-networks:
-  media-tube-net:
-    external: true
