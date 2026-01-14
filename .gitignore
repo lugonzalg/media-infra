@@ -1,0 +1,6 @@
+.env
+volume
+*.conf
+qBittorrent
+config
+pi_hole/etc
