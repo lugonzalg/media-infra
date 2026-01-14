@@ -5,7 +5,7 @@ server {
     proxy_buffering off;
 
     location / {
-        proxy_pass http://jellyseerr:5055;
+        proxy_pass http://gluetun:5055;
 
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;

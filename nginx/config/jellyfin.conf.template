@@ -6,7 +6,7 @@ server {
     proxy_buffering off;
 
     location / {
-        proxy_pass http://host.docker.internal:8096;
+	proxy_pass http://192.168.1.146:8096;
 
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
