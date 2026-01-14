@@ -1,0 +1,16 @@
+services:
+  nginx:
+    image: nginx:1.29.3-trixie-perl
+    container_name: nginx
+    volumes:
+      - ./config:/etc/nginx/templates:ro
+    environment:
+      - SSL_PORT=${SSL_PORT}
+      - QBITTORRENT_SUBDOMAIN=${QBITTORRENT_SUBDOMAIN}
+      - JELLYSEERR_SUBDOMAIN=${JELLYSEERR_SUBDOMAIN}
+      - JELLYFIN_SUBDOMAIN=${JELLYFIN_SUBDOMAIN}
+      - SONARR_SUBDOMAIN=${SONARR_SUBDOMAIN}
+      - RADARR_SUBDOMAIN=${RADARR_SUBDOMAIN}
+      - PROWLARR_SUBDOMAIN=${PROWLARR_SUBDOMAIN}
+    restart: unless-stopped
+    network_mode: container:gluetun

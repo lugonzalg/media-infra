@@ -6,14 +6,30 @@ services:
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
-    ports:
-      - 8888:8888/tcp # HTTP proxy
-      - 8388:8388/tcp # Shadowsocks
-      - 8388:8388/udp # Shadowsocks
     volumes:
-      - ./config/peer4.conf:/gluetun/wireguard/wg0.conf
+      - ./config/peer2.conf:/gluetun/wireguard/wg0.conf
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+      - 5055:5055
+      - 9696:9696
+      - 8989:8989
+      - 7878:7878
+      - 80:80
+      - 443:443
     environment:
       - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
       - VPN_TYPE=${VPN_TYPE}
-      - DOT=${DOT}
-      - DNS_ADDRESS=${DNS_ADDRESS}
+      - FIREWALL_OUTBOUND_SUBNETS=192.168.1.0/24
+      - FIREWALL_VPN_INPUT_PORTS=80,443
+      - FIREWALL_INPUT_PORTS=80,443
+      # - FIREWALL_INPUT_PORTS=80
+      # - DOT=${DOT}
+      # - DNS_ADDRESS=${DNS_ADDRESS}
+    networks:
+      - vpn
+
+networks:
+  vpn:
+    name: "vpn"
