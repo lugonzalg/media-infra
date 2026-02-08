@@ -15,5 +15,12 @@ services:
       timeout: 3s
       interval: 15s
       retries: 3
-    network_mode: container:gluetun
+    ports:
+      - 5055:5055
+    networks:
+      - vpn
     restart: unless-stopped
+
+networks:
+  vpn:
+    external: true

@@ -1,11 +1,11 @@
 server {
     listen 80;
-    server_name ${JELLYSEERR_SUBDOMAIN};
+    server_name ${SONARR_SUBDOMAIN};
 
     proxy_buffering off;
 
     location / {
-        proxy_pass http://jellyseerr:5055;
+        proxy_pass http://sonarr:8989;
 
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;

@@ -9,13 +9,8 @@ services:
     volumes:
       - ./config/peer2.conf:/gluetun/wireguard/wg0.conf
     ports:
-      - 8080:8080
       - 6881:6881
       - 6881:6881/udp
-      - 5055:5055
-      - 9696:9696
-      - 8989:8989
-      - 7878:7878
       - 80:80
       - 443:443
     environment:
@@ -24,11 +19,13 @@ services:
       - FIREWALL_OUTBOUND_SUBNETS=192.168.1.0/24
       - FIREWALL_VPN_INPUT_PORTS=80,443
       - FIREWALL_INPUT_PORTS=80,443
+      # - WIREGUARD_MTU=1280
       # - FIREWALL_INPUT_PORTS=80
       # - DOT=${DOT}
       # - DNS_ADDRESS=${DNS_ADDRESS}
     networks:
       - vpn
+    restart: unless-stopped
 
 networks:
   vpn:
