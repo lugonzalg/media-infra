@@ -12,5 +12,12 @@ services:
     volumes:
       - ./config:/config
       - ./downloads:/downloads
-    network_mode: container:gluetun
+    ports:
+      - 8080:8080
+    networks:
+      - vpn
     restart: unless-stopped
+
+networks:
+  vpn:
+    external: true

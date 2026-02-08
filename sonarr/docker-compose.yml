@@ -10,5 +10,12 @@ services:
       - ./config:/config
       - /Users/lukas/mnt/gdrive/media:/data
       - ../qbittorrent/downloads:/downloads
-    network_mode: container:gluetun
+    ports:
+      - 8989:8989
+    networks:
+      - vpn
     restart: unless-stopped
+
+networks:
+  vpn:
+    external: true

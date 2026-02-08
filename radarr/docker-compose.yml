@@ -10,9 +10,14 @@ services:
       - ./config:/config
       - /Users/lukas/mnt/gdrive/media:/data
       - ../qbittorrent/downloads:/downloads
+    networks:
+      - vpn
     restart: unless-stopped
-    network_mode: container:gluetun
 
 volumes:
    data:
      name: media-tube-data
+
+networks:
+  vpn:
+    external: true
